@@ -15,113 +15,208 @@
     .section-title { font-size: 2.5rem; font-weight: 700; color: #2563eb; margin-bottom: 2rem; letter-spacing: -1px; }
     .sticky-nav { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.95); box-shadow: 0 2px 8px 0 rgba(37,99,235,0.04); }
     .divider { height: 2px; background: linear-gradient(90deg, #2563eb11 0%, #60a5fa33 100%); margin: 3rem 0; border-radius: 1px; }
+    html { scroll-behavior: smooth; }
   </style>
 </head>
 <body class="text-gray-900">
   <!-- Sticky Navigation -->
   <nav class="sticky-nav w-full">
     <div class="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
-      <a href="index.html" class="text-2xl font-extrabold text-blue-700 tracking-tight">BlueBreeze</a>
+      <a href="#home" class="text-2xl font-extrabold text-blue-700 tracking-tight">BlueBreeze</a>
       <div class="space-x-8 text-lg font-semibold">
-        <a href="index.html" class="text-blue-700">Home</a>
-        <a href="services.html" class="hover:text-blue-700">Services</a>
-        <a href="about.html" class="hover:text-blue-700">About</a>
-        <a href="faq.html" class="hover:text-blue-700">FAQ</a>
-        <a href="contact.html" class="hover:text-blue-700">Contact</a>
+        <a href="#home" class="text-blue-700">Home</a>
+        <a href="#services" class="hover:text-blue-700">Services</a>
+        <a href="#about" class="hover:text-blue-700">About</a>
+        <a href="#faq" class="hover:text-blue-700">FAQ</a>
+        <a href="#contact" class="hover:text-blue-700">Contact</a>
       </div>
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="relative flex flex-col items-center justify-center min-h-[70vh] py-20 bg-gradient-to-br from-blue-100 via-white to-blue-50">
+  <!-- Home / Hero Section -->
+  <section id="home" class="relative flex flex-col items-center justify-center min-h-[70vh] py-20 bg-gradient-to-br from-blue-100 via-white to-blue-50">
     <div class="absolute inset-0 pointer-events-none">
       <svg width="100%" height="100%" viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#2563eb11" d="M0,160L80,170.7C160,181,320,203,480,197.3C640,192,800,160,960,133.3C1120,107,1280,85,1360,74.7L1440,64L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>
     </div>
     <div class="relative z-10 text-center max-w-2xl mx-auto">
       <h1 class="text-5xl md:text-6xl font-extrabold mb-6 text-blue-800 leading-tight">Whole-Home Comfort, <span class="text-blue-500">Trusted HVAC Experts</span></h1>
       <p class="text-xl md:text-2xl mb-8 text-gray-700">Experience the future of home comfort with BlueBreeze. Advanced heating, cooling, and air quality solutions for modern living.</p>
-      <a href="contact.html" class="neon-btn px-10 py-4 rounded-xl font-bold text-lg shadow-lg">Get a Free Quote</a>
+      <a href="#contact" class="neon-btn px-10 py-4 rounded-xl font-bold text-lg shadow-lg">Get a Free Quote</a>
     </div>
   </section>
 
   <div class="divider"></div>
 
-  <!-- Services Section -->
-  <section class="max-w-7xl mx-auto px-4 py-12">
+  <!-- Services Section (merged) -->
+  <section id="services" class="max-w-7xl mx-auto px-4 py-12">
     <h2 class="section-title text-center">Our Services</h2>
     <div class="grid md:grid-cols-3 gap-10">
       <div class="glass p-8 flex flex-col items-center text-center shadow-xl">
         <i class="fas fa-snowflake text-5xl text-blue-500 mb-4"></i>
         <h3 class="font-bold text-xl mb-2">AC Installation & Repair</h3>
-        <p>Stay cool with expert air conditioning installation, repair, and maintenance for all brands and models.</p>
+        <p>Expert installation, repair, and maintenance for all air conditioning brands. Stay cool and save on energy bills with our efficient solutions.</p>
       </div>
       <div class="glass p-8 flex flex-col items-center text-center shadow-xl">
         <i class="fas fa-fire text-5xl text-blue-500 mb-4"></i>
         <h3 class="font-bold text-xl mb-2">Heating Solutions</h3>
-        <p>Efficient furnace and heat pump installation, repair, and seasonal tune-ups to keep you warm all winter.</p>
+        <p>Furnace and heat pump installation, repair, and seasonal tune-ups. Reliable warmth for your home or business, all winter long.</p>
       </div>
       <div class="glass p-8 flex flex-col items-center text-center shadow-xl">
         <i class="fas fa-wind text-5xl text-blue-500 mb-4"></i>
         <h3 class="font-bold text-xl mb-2">Indoor Air Quality</h3>
         <p>Air purification, duct cleaning, and humidity control for a healthier, more comfortable environment.</p>
       </div>
+      <div class="glass p-8 flex flex-col items-center text-center shadow-xl">
+        <i class="fas fa-tools text-5xl text-blue-500 mb-4"></i>
+        <h3 class="font-bold text-xl mb-2">Preventative Maintenance</h3>
+        <p>Regular inspections and tune-ups to extend the life of your HVAC system and prevent costly breakdowns.</p>
+      </div>
+      <div class="glass p-8 flex flex-col items-center text-center shadow-xl">
+        <i class="fas fa-exclamation-triangle text-5xl text-blue-500 mb-4"></i>
+        <h3 class="font-bold text-xl mb-2">Emergency Services</h3>
+        <p>24/7 emergency repairs. Our team is always ready to restore your comfort, day or night.</p>
+      </div>
+      <div class="glass p-8 flex flex-col items-center text-center shadow-xl">
+        <i class="fas fa-building text-5xl text-blue-500 mb-4"></i>
+        <h3 class="font-bold text-xl mb-2">Commercial HVAC</h3>
+        <p>Custom solutions for offices, retail, and industrial spaces. Keep your business running smoothly with BlueBreeze.</p>
+      </div>
+      <div class="glass p-8 flex flex-col items-center text-center shadow-xl">
+        <i class="fas fa-tint text-5xl text-blue-500 mb-4"></i>
+        <h3 class="font-bold text-xl mb-2">Plumbing Services</h3>
+        <p>Water heaters, drains, filtration, and more. Complete plumbing solutions for your home or business.</p>
+      </div>
     </div>
     <div class="flex justify-center mt-10">
-      <a href="services.html" class="neon-btn px-8 py-3 rounded-lg font-semibold text-lg">View All Services</a>
+      <a href="#contact" class="neon-btn px-8 py-3 rounded-lg font-semibold text-lg">Request a Free Quote</a>
     </div>
   </section>
 
   <div class="divider"></div>
 
-  <!-- Offers/Guarantees Section -->
-  <section class="max-w-6xl mx-auto px-4 py-12">
-    <h2 class="section-title text-center">Why Choose BlueBreeze?</h2>
-    <div class="grid md:grid-cols-4 gap-8">
+  <!-- About Section (merged) -->
+  <section id="about" class="max-w-5xl mx-auto px-4 py-12">
+    <div class="glass p-8 mb-10">
+      <h2 class="section-title">Our Story</h2>
+      <p class="mb-6">BlueBreeze HVAC Solutions was founded by a team of passionate professionals who wanted to make a difference in the comfort and air quality of homes and businesses. With over 20 years of combined experience, we have grown into a trusted name in the industry, known for our integrity, expertise, and customer-first approach.</p>
+      <h2 class="section-title">Our Mission & Values</h2>
+      <ul class="list-disc list-inside mb-8 text-lg">
+        <li>Customer comfort and satisfaction above all</li>
+        <li>Honesty and transparency in every job</li>
+        <li>Continuous learning and improvement</li>
+        <li>Eco-friendly and energy-efficient solutions</li>
+      </ul>
+    </div>
+    <div class="divider"></div>
+    <h2 class="section-title text-center">Meet Our Team</h2>
+    <div class="grid md:grid-cols-3 gap-8 mb-8">
       <div class="glass p-6 text-center">
-        <i class="fas fa-badge-check text-4xl text-blue-600 mb-3"></i>
-        <h4 class="font-bold mb-2">Transparent Pricing</h4>
-        <p>No hidden fees. We discuss all options and costs up front.</p>
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Team Member" class="w-24 h-24 rounded-full mx-auto mb-4">
+        <h3 class="font-bold text-lg">Alex Johnson</h3>
+        <p class="text-blue-700">Founder & Lead Technician</p>
+      </div>
+      <div class="glass p-6 text-center">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Team Member" class="w-24 h-24 rounded-full mx-auto mb-4">
+        <h3 class="font-bold text-lg">Maria Lopez</h3>
+        <p class="text-blue-700">Customer Success Manager</p>
+      </div>
+      <div class="glass p-6 text-center">
+        <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Team Member" class="w-24 h-24 rounded-full mx-auto mb-4">
+        <h3 class="font-bold text-lg">James Lee</h3>
+        <p class="text-blue-700">HVAC Specialist</p>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <h2 class="section-title text-center">Certifications</h2>
+    <div class="flex flex-wrap justify-center gap-8 mb-8">
+      <div class="glass p-6 text-center">
+        <i class="fas fa-certificate text-4xl text-blue-600 mb-3"></i>
+        <h4 class="font-bold mb-2">NATE Certified</h4>
+      </div>
+      <div class="glass p-6 text-center">
+        <i class="fas fa-leaf text-4xl text-blue-600 mb-3"></i>
+        <h4 class="font-bold mb-2">EPA Certified</h4>
       </div>
       <div class="glass p-6 text-center">
         <i class="fas fa-shield-alt text-4xl text-blue-600 mb-3"></i>
-        <h4 class="font-bold mb-2">Quality Assurance</h4>
-        <p>We stand behind our work with industry-leading warranties.</p>
+        <h4 class="font-bold mb-2">Licensed & Insured</h4>
       </div>
-      <div class="glass p-6 text-center">
-        <i class="fas fa-bolt text-4xl text-blue-600 mb-3"></i>
-        <h4 class="font-bold mb-2">Fast & Reliable</h4>
-        <p>Same-day service and 24/7 emergency support.</p>
+    </div>
+    <div class="text-center mt-12">
+      <a href="#contact" class="neon-btn px-8 py-3 rounded-lg font-semibold text-lg">Contact Us</a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FAQ Section (merged) -->
+  <section id="faq" class="max-w-3xl mx-auto px-4 py-12">
+    <h2 class="section-title text-center">Frequently Asked Questions</h2>
+    <div class="space-y-8">
+      <div class="glass p-6">
+        <h2 class="font-bold text-lg text-blue-800 mb-2">How often should I service my HVAC system?</h2>
+        <p>We recommend servicing your HVAC system at least once a year to ensure optimal performance and prevent breakdowns.</p>
       </div>
-      <div class="glass p-6 text-center">
-        <i class="fas fa-thumbs-up text-4xl text-blue-600 mb-3"></i>
-        <h4 class="font-bold mb-2">Satisfaction Guaranteed</h4>
-        <p>100% satisfaction or your money back.</p>
+      <div class="glass p-6">
+        <h2 class="font-bold text-lg text-blue-800 mb-2">What are signs my AC or heater needs repair?</h2>
+        <p>Unusual noises, weak airflow, inconsistent temperatures, or higher energy bills are common signs your system needs attention.</p>
+      </div>
+      <div class="glass p-6">
+        <h2 class="font-bold text-lg text-blue-800 mb-2">Do you offer emergency HVAC services?</h2>
+        <p>Yes! We provide 24/7 emergency repair services for urgent heating and cooling issues.</p>
+      </div>
+      <div class="glass p-6">
+        <h2 class="font-bold text-lg text-blue-800 mb-2">How can I improve my indoor air quality?</h2>
+        <p>We offer air purification, duct cleaning, and humidity control solutions to help you breathe easier.</p>
+      </div>
+      <div class="glass p-6">
+        <h2 class="font-bold text-lg text-blue-800 mb-2">Are your technicians certified?</h2>
+        <p>All our technicians are fully licensed, insured, and certified for your peace of mind.</p>
+      </div>
+      <div class="glass p-6">
+        <h2 class="font-bold text-lg text-blue-800 mb-2">Do you work with commercial clients?</h2>
+        <p>Absolutely! We provide HVAC solutions for homes, offices, retail, and industrial spaces.</p>
       </div>
     </div>
   </section>
 
   <div class="divider"></div>
 
-  <!-- Testimonials Section -->
-  <section class="max-w-5xl mx-auto px-4 py-12">
-    <h2 class="section-title text-center">What Our Customers Say</h2>
-    <div class="grid md:grid-cols-2 gap-8">
-      <div class="glass p-8 shadow-md">
-        <p class="mb-4">“BlueBreeze fixed our AC in the middle of a heatwave. Fast, friendly, and professional!”</p>
-        <div class="font-bold text-blue-700">— Sarah L.</div>
+  <!-- Contact Section (merged) -->
+  <section id="contact" class="max-w-5xl mx-auto px-4 py-12 grid md:grid-cols-2 gap-12">
+    <div>
+      <div class="glass p-8 mb-8">
+        <h2 class="section-title text-2xl mb-4">Contact Information</h2>
+        <div class="mb-4"><i class="fas fa-phone-alt text-blue-600 mr-2"></i> <a href="tel:1234567890" class="underline font-semibold">(123) 456-7890</a></div>
+        <div class="mb-4"><i class="fas fa-envelope text-blue-600 mr-2"></i> <a href="mailto:info@bluebreezehvac.com" class="underline font-semibold">info@bluebreezehvac.com</a></div>
+        <div class="mb-4"><i class="fas fa-clock text-blue-600 mr-2"></i> Mon-Fri: 8am - 6pm<br>Sat: 9am - 2pm<br>Sun: Closed</div>
+        <div class="mb-4"><i class="fas fa-map-marker-alt text-blue-600 mr-2"></i> 123 Main St, Pleasanton, CA</div>
       </div>
-      <div class="glass p-8 shadow-md">
-        <p class="mb-4">“The technician explained everything and gave us options. We love our new heating system!”</p>
-        <div class="font-bold text-blue-700">— Mike D.</div>
+      <div class="glass p-8">
+        <h2 class="section-title text-2xl mb-4">Our Location</h2>
+        <div class="w-full h-64 bg-gray-300 rounded-lg flex items-center justify-center mb-2">
+          <span class="text-blue-700">[Google Map Placeholder]</span>
+        </div>
+        <a href="tel:1234567890" class="neon-btn px-8 py-3 rounded-lg font-semibold text-lg w-full">Call Now</a>
       </div>
-      <div class="glass p-8 shadow-md">
-        <p class="mb-4">“Great service, honest pricing, and our air quality has never been better.”</p>
-        <div class="font-bold text-blue-700">— Priya S.</div>
-      </div>
-      <div class="glass p-8 shadow-md">
-        <p class="mb-4">“Highly recommend BlueBreeze for any HVAC needs. They really care about their customers.”</p>
-        <div class="font-bold text-blue-700">— Carlos R.</div>
-      </div>
+    </div>
+    <div>
+      <form class="glass p-8 shadow-lg">
+        <h2 class="section-title text-2xl mb-4">Send Us a Message</h2>
+        <div class="mb-4">
+          <label class="block mb-2 font-semibold" for="name">Name</label>
+          <input class="w-full px-4 py-2 rounded-lg text-gray-900" type="text" id="name" name="name" required>
+        </div>
+        <div class="mb-4">
+          <label class="block mb-2 font-semibold" for="email">Email</label>
+          <input class="w-full px-4 py-2 rounded-lg text-gray-900" type="email" id="email" name="email" required>
+        </div>
+        <div class="mb-4">
+          <label class="block mb-2 font-semibold" for="message">Message</label>
+          <textarea class="w-full px-4 py-2 rounded-lg text-gray-900" id="message" name="message" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="neon-btn px-8 py-3 rounded-lg font-semibold text-lg w-full">Send Message</button>
+      </form>
     </div>
   </section>
 
@@ -130,13 +225,13 @@
   <!-- Footer -->
   <footer class="py-10 bg-gradient-to-r from-blue-900 via-blue-800 to-blue-700 text-white text-center">
     <div class="mb-4">
-      <a href="index.html" class="text-2xl font-extrabold text-white">BlueBreeze HVAC Solutions</a>
+      <a href="#home" class="text-2xl font-extrabold text-white">BlueBreeze HVAC Solutions</a>
     </div>
     <div class="mb-2">
       <a href="tel:1234567890" class="underline font-semibold">(123) 456-7890</a> | <a href="mailto:info@bluebreezehvac.com" class="underline font-semibold">info@bluebreezehvac.com</a>
     </div>
     <div class="mb-2">
-      <a href="privacy.html" class="hover:underline">Privacy Policy</a> | <a href="sitemap.html" class="hover:underline">Sitemap</a>
+      <a href="#privacy" class="hover:underline">Privacy Policy</a> | <a href="#sitemap" class="hover:underline">Sitemap</a>
     </div>
     <div class="text-xs opacity-70">&copy; 2025 BlueBreeze HVAC Solutions. All rights reserved.</div>
   </footer>
