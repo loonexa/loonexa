@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lunexa Realty - Find Your Dream Home | Updated for Vercel</title>
+    <title>BlueBreeze HVAC Solutions | Comfort Experts</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -19,535 +19,148 @@
      data-widget-id="688aa1a4828cb2831b7c6f68"   > 
      </script>
     <style>
-    /*comment*/
         body {
             font-family: 'Inter', sans-serif;
         }
         .gradient-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #2563eb 0%, #60a5fa 100%);
         }
         .hero-bg {
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+            background: linear-gradient(rgba(37,99,235,0.7), rgba(96,165,250,0.7)), url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80');
             background-size: cover;
             background-position: center;
             position: relative;
             overflow: hidden;
         }
-        .property-card {
-            transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-            background: rgba(255,255,255,0.7);
-            backdrop-filter: blur(8px) saturate(1.2);
-            border-radius: 1.5rem;
-            border: 1.5px solid rgba(102,126,234,0.2);
-            box-shadow: 0 8px 32px 0 rgba(31,38,135,0.15);
-        }
-        .property-card:hover {
-            transform: translateY(-8px) scale(1.03) rotateZ(-1deg);
-            box-shadow: 0 20px 40px -5px #667eea55, 0 10px 20px -5px #764ba255;
-            border-color: #667eea;
-        }
         .glass {
-            background: rgba(255,255,255,0.15);
-            box-shadow: 0 8px 32px 0 rgba(31,38,135,0.15);
+            background: rgba(255,255,255,0.25);
             backdrop-filter: blur(8px) saturate(1.2);
             border-radius: 1.5rem;
-            border: 1.5px solid rgba(102,126,234,0.2);
+            border: 1.5px solid rgba(37,99,235,0.2);
         }
         .neon-btn {
-            border: 2px solid #667eea;
-            box-shadow: 0 0 8px #667eea, 0 0 16px #764ba2;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border: 2px solid #2563eb;
+            box-shadow: 0 0 8px #2563eb, 0 0 16px #60a5fa;
+            background: linear-gradient(90deg, #2563eb 0%, #60a5fa 100%);
             color: #fff;
             transition: box-shadow 0.3s, transform 0.3s;
         }
         .neon-btn:hover {
-            box-shadow: 0 0 24px #667eea, 0 0 48px #764ba2;
+            box-shadow: 0 0 24px #2563eb, 0 0 48px #60a5fa;
             transform: scale(1.05);
-        }
-        .floating {
-            animation: floating 3s ease-in-out infinite;
-        }
-        @keyframes floating {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-        /* 3D House SVG Animation */
-        .hero-3d-house {
-            position: absolute;
-            top: 10%;
-            right: 8%;
-            width: 120px;
-            z-index: 1;
-            filter: drop-shadow(0 8px 32px #667eea88);
-            animation: house-float 4s ease-in-out infinite;
-        }
-        @keyframes house-float {
-            0% { transform: translateY(0) rotateY(0deg); }
-            50% { transform: translateY(-18px) rotateY(10deg); }
-            100% { transform: translateY(0) rotateY(0deg); }
-        }
-        /* Chatbot bounce and prompt */
-        .chatbot-launcher {
-            position: fixed;
-            bottom: 32px;
-            right: 32px;
-            z-index: 10000;
-            animation: bounce 1.5s infinite;
-        }
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-18px); }
-        }
-        .chatbot-prompt {
-            position: fixed;
-            bottom: 100px;
-            right: 48px;
-            background: rgba(102,126,234,0.95);
-            color: #fff;
-            padding: 10px 22px;
-            border-radius: 2rem;
-            font-weight: 600;
-            font-size: 1.1rem;
-            box-shadow: 0 4px 16px #667eea55;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            animation: prompt-float 2.5s infinite;
-        }
-        @keyframes prompt-float {
-            0%, 100% { opacity: 0.7; transform: translateY(0); }
-            50% { opacity: 1; transform: translateY(-10px); }
-        }
-        .arrow-down {
-            width: 24px;
-            height: 24px;
-            display: inline-block;
-            animation: arrow-bounce 1.5s infinite;
-        }
-        @keyframes arrow-bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(8px); }
-        }
-        /* Futuristic grid background */
-        .futuristic-grid {
-            position: absolute;
-            left: 0; top: 0; width: 100%; height: 100%;
-            z-index: 0;
-            pointer-events: none;
-            opacity: 0.18;
         }
     </style>
 </head>
-<body class="bg-gray-50">
-    <!-- Subtle mock website note -->
-    <div style="position:fixed;bottom:18px;left:18px;z-index:10001;font-size:0.82rem;color:#b0b0b0;opacity:0.6;pointer-events:none;user-select:none;letter-spacing:0.01em;">This is a mock website for demonstration purposes only.</div>
-    
-    <!-- Navigation -->
-    <nav class="bg-white shadow-lg fixed w-full z-50" role="navigation" aria-label="Main navigation">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center py-4">
-                <div class="flex items-center">
-                    <i class="fas fa-home text-blue-600 text-2xl mr-2" aria-hidden="true"></i>
-                    <span class="text-2xl font-bold text-gray-800">Lunexa Realty</span>
-                </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="text-gray-700 hover:text-blue-600 transition duration-300">Home</a>
-                    <a href="#properties" class="text-gray-700 hover:text-blue-600 transition duration-300">Properties</a>
-                    <a href="#services" class="text-gray-700 hover:text-blue-600 transition duration-300">Services</a>
-                    <a href="#about" class="text-gray-700 hover:text-blue-600 transition duration-300">About</a>
-                    <a href="#contact" class="text-gray-700 hover:text-blue-600 transition duration-300">Contact</a>
-                </div>
-                <div class="md:hidden">
-                    <button class="text-gray-700" aria-label="Toggle mobile menu">
-                        <i class="fas fa-bars text-xl" aria-hidden="true"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
-
+<body class="bg-white text-gray-900">
     <!-- Hero Section -->
-    <section id="home" class="hero-bg min-h-screen flex items-center justify-center text-white">
-        <svg class="futuristic-grid" viewBox="0 0 1440 800" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <g stroke="#fff" stroke-width="0.5">
-                <rect x="0" y="0" width="1440" height="800" fill="none"/>
-                <g>
-                    <line x1="0" y1="100" x2="1440" y2="100"/>
-                    <line x1="0" y1="200" x2="1440" y2="200"/>
-                    <line x1="0" y1="300" x2="1440" y2="300"/>
-                    <line x1="0" y1="400" x2="1440" y2="400"/>
-                    <line x1="0" y1="500" x2="1440" y2="500"/>
-                    <line x1="0" y1="600" x2="1440" y2="600"/>
-                    <line x1="0" y1="700" x2="1440" y2="700"/>
-                </g>
-                <g>
-                    <line y1="0" x1="200" x2="200" y2="800"/>
-                    <line y1="0" x1="400" x2="400" y2="800"/>
-                    <line y1="0" x1="600" x2="600" y2="800"/>
-                    <line y1="0" x1="800" x2="800" y2="800"/>
-                    <line y1="0" x1="1000" x2="1000" y2="800"/>
-                    <line y1="0" x1="1200" x2="1200" y2="800"/>
-                </g>
-            </g>
-        </svg>
-        <div class="text-center max-w-4xl mx-auto px-4 relative z-10">
-            <h1 class="text-5xl md:text-7xl font-bold mb-6 floating">
-                Find Your Dream Home
-            </h1>
-            <p class="text-xl md:text-2xl mb-8 text-gray-200">
-                Discover exceptional properties in the most desirable locations
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <button class="neon-btn px-8 py-4 rounded-full font-semibold transition duration-300 transform hover:scale-105">
-                    <i class="fas fa-search mr-2" aria-hidden="true"></i>Search Properties
-                </button>
-                <button class="neon-btn bg-transparent border-2 border-white hover:bg-white hover:text-gray-800 text-white px-8 py-4 rounded-full font-semibold transition duration-300" id="give-feedback-btn">
-                    <i class="fas fa-comment-dots mr-2" aria-hidden="true"></i>Give Feedback
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Search Section -->
-    <section class="py-16 bg-white">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="bg-white rounded-2xl shadow-xl p-8 -mt-20 relative z-10">
-                <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">Find Your Perfect Property</h2>
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                    <div class="relative">
-                        <i class="fas fa-map-marker-alt absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" aria-hidden="true"></i>
-                        <input type="text" placeholder="Location" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" aria-label="Property location">
-                    </div>
-                    <div class="relative">
-                        <i class="fas fa-home absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" aria-hidden="true"></i>
-                        <select class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" aria-label="Property type">
-                            <option>Property Type</option>
-                            <option>House</option>
-                            <option>Apartment</option>
-                            <option>Condo</option>
-                            <option>Townhouse</option>
-                        </select>
-                    </div>
-                    <div class="relative">
-                        <i class="fas fa-dollar-sign absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" aria-hidden="true"></i>
-                        <select class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" aria-label="Price range">
-                            <option>Price Range</option>
-                            <option>$100k - $300k</option>
-                            <option>$300k - $500k</option>
-                            <option>$500k - $1M</option>
-                            <option>$1M+</option>
-                        </select>
-                    </div>
-                    <button class="bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg font-semibold transition duration-300">
-                        <i class="fas fa-search mr-2" aria-hidden="true"></i>Search
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Featured Properties -->
-    <section id="properties" class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-800 mb-4">Featured Properties</h2>
-                <p class="text-xl text-gray-600">Discover our handpicked selection of premium properties</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Property Card 1 -->
-                <div class="property-card bg-white rounded-2xl overflow-hidden shadow-lg">
-                    <div class="relative">
-                        <img src="https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Modern Luxury Villa" class="w-full h-64 object-cover">
-                        <div class="absolute top-4 right-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                            For Sale
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Modern Luxury Villa</h3>
-                        <p class="text-gray-600 mb-4"><i class="fas fa-map-marker-alt mr-2" aria-hidden="true"></i>Beverly Hills, CA</p>
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="text-2xl font-bold text-blue-600">$2,450,000</span>
-                            <div class="flex space-x-2 text-gray-500">
-                                <span><i class="fas fa-bed mr-1" aria-hidden="true"></i>4</span>
-                                <span><i class="fas fa-bath mr-1" aria-hidden="true"></i>3</span>
-                                <span><i class="fas fa-ruler-combined mr-1" aria-hidden="true"></i>3,200 sqft</span>
-                            </div>
-                        </div>
-                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold transition duration-300">
-                            View Details
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Property Card 2 -->
-                <div class="property-card bg-white rounded-2xl overflow-hidden shadow-lg">
-                    <div class="relative">
-                        <img src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Contemporary Family Home" class="w-full h-64 object-cover">
-                        <div class="absolute top-4 right-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                            For Rent
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Contemporary Family Home</h3>
-                        <p class="text-gray-600 mb-4"><i class="fas fa-map-marker-alt mr-2" aria-hidden="true"></i>Santa Monica, CA</p>
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="text-2xl font-bold text-blue-600">$8,500/month</span>
-                            <div class="flex space-x-2 text-gray-500">
-                                <span><i class="fas fa-bed mr-1" aria-hidden="true"></i>3</span>
-                                <span><i class="fas fa-bath mr-1" aria-hidden="true"></i>2</span>
-                                <span><i class="fas fa-ruler-combined mr-1" aria-hidden="true"></i>2,100 sqft</span>
-                            </div>
-                        </div>
-                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold transition duration-300">
-                            View Details
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Property Card 3 -->
-                <div class="property-card bg-white rounded-2xl overflow-hidden shadow-lg">
-                    <div class="relative">
-                        <img src="https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Downtown Penthouse" class="w-full h-64 object-cover">
-                        <div class="absolute top-4 right-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                            For Sale
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Downtown Penthouse</h3>
-                        <p class="text-gray-600 mb-4"><i class="fas fa-map-marker-alt mr-2" aria-hidden="true"></i>Downtown LA, CA</p>
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="text-2xl font-bold text-blue-600">$1,850,000</span>
-                            <div class="flex space-x-2 text-gray-500">
-                                <span><i class="fas fa-bed mr-1" aria-hidden="true"></i>2</span>
-                                <span><i class="fas fa-bath mr-1" aria-hidden="true"></i>2</span>
-                                <span><i class="fas fa-ruler-combined mr-1" aria-hidden="true"></i>1,800 sqft</span>
-                            </div>
-                        </div>
-                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold transition duration-300">
-                            View Details
-                        </button>
-                    </div>
-                </div>
-            </div>
+    <section class="hero-bg min-h-screen flex items-center justify-center">
+        <div class="text-center text-white px-6 py-16 glass max-w-2xl mx-auto">
+            <h1 class="text-5xl font-bold mb-4">BlueBreeze HVAC Solutions</h1>
+            <p class="text-xl mb-8">Your comfort is our mission. Expert heating, cooling, and air quality services for homes & businesses.</p>
+            <a href="#contact" class="neon-btn px-8 py-3 rounded-lg font-semibold text-lg">Request a Free Quote</a>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-800 mb-4">Our Services</h2>
-                <p class="text-xl text-gray-600">Comprehensive real estate solutions tailored to your needs</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="text-center p-8 rounded-2xl bg-gray-50 hover:bg-blue-50 transition duration-300">
-                    <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-home text-white text-2xl" aria-hidden="true"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">Property Sales</h3>
-                    <p class="text-gray-600">Expert guidance through every step of buying and selling properties with maximum value.</p>
+    <section class="py-20 bg-blue-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-blue-800 mb-12">Our HVAC Services</h2>
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="glass p-8 text-center shadow-lg">
+                    <i class="fas fa-snowflake text-4xl text-blue-500 mb-4"></i>
+                    <h3 class="font-bold text-xl mb-2">AC Installation & Repair</h3>
+                    <p>Stay cool with expert air conditioning installation, repair, and maintenance for all brands and models.</p>
                 </div>
-                <div class="text-center p-8 rounded-2xl bg-gray-50 hover:bg-blue-50 transition duration-300">
-                    <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-key text-white text-2xl" aria-hidden="true"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">Property Management</h3>
-                    <p class="text-gray-600">Comprehensive property management services for landlords and investors.</p>
+                <div class="glass p-8 text-center shadow-lg">
+                    <i class="fas fa-fire text-4xl text-blue-500 mb-4"></i>
+                    <h3 class="font-bold text-xl mb-2">Heating Solutions</h3>
+                    <p>Efficient furnace and heat pump installation, repair, and seasonal tune-ups to keep you warm all winter.</p>
                 </div>
-                <div class="text-center p-8 rounded-2xl bg-gray-50 hover:bg-blue-50 transition duration-300">
-                    <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-chart-line text-white text-2xl" aria-hidden="true"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">Investment Advisory</h3>
-                    <p class="text-gray-600">Strategic investment advice to help you build wealth through real estate.</p>
+                <div class="glass p-8 text-center shadow-lg">
+                    <i class="fas fa-wind text-4xl text-blue-500 mb-4"></i>
+                    <h3 class="font-bold text-xl mb-2">Indoor Air Quality</h3>
+                    <p>Air purification, duct cleaning, and humidity control for a healthier, more comfortable environment.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h2 class="text-4xl font-bold text-gray-800 mb-6">About Lunexa Realty</h2>
-                    <p class="text-lg text-gray-600 mb-6">
-                        With over 15 years of experience in the real estate market, we've helped thousands of families find their perfect homes and investors maximize their returns.
-                    </p>
-                    <div class="grid grid-cols-2 gap-6">
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-blue-600 mb-2">500+</div>
-                            <div class="text-gray-600">Happy Clients</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-blue-600 mb-2">$2B+</div>
-                            <div class="text-gray-600">Properties Sold</div>
-                        </div>
-                    </div>
+    <!-- Why Choose Us Section -->
+    <section class="py-20 gradient-bg text-white">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-10">Why Choose BlueBreeze?</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <i class="fas fa-user-shield text-4xl mb-4"></i>
+                    <h3 class="font-semibold text-xl mb-2">Certified Technicians</h3>
+                    <p>Our team is fully licensed, insured, and background-checked for your peace of mind.</p>
                 </div>
-                <div class="relative">
-                    <img src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Lunexa Realty Team" class="rounded-2xl shadow-lg">
+                <div class="text-center">
+                    <i class="fas fa-bolt text-4xl mb-4"></i>
+                    <h3 class="font-semibold text-xl mb-2">Fast & Reliable</h3>
+                    <p>Same-day service and 24/7 emergency support. We’re there when you need us most.</p>
+                </div>
+                <div class="text-center">
+                    <i class="fas fa-thumbs-up text-4xl mb-4"></i>
+                    <h3 class="font-semibold text-xl mb-2">Satisfaction Guaranteed</h3>
+                    <p>We stand by our work with industry-leading warranties and a 100% satisfaction guarantee.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-blue-50">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-blue-800 mb-12">What Our Customers Say</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="glass p-6 shadow-md">
+                    <p class="mb-4">“BlueBreeze fixed our AC in the middle of a heatwave. Fast, friendly, and professional!”</p>
+                    <div class="font-bold text-blue-700">— Sarah L.</div>
+                </div>
+                <div class="glass p-6 shadow-md">
+                    <p class="mb-4">“The technician explained everything and gave us options. We love our new heating system!”</p>
+                    <div class="font-bold text-blue-700">— Mike D.</div>
+                </div>
+                <div class="glass p-6 shadow-md">
+                    <p class="mb-4">“Great service, honest pricing, and our air quality has never been better.”</p>
+                    <div class="font-bold text-blue-700">— Priya S.</div>
+                </div>
+                <div class="glass p-6 shadow-md">
+                    <p class="mb-4">“Highly recommend BlueBreeze for any HVAC needs. They really care about their customers.”</p>
+                    <div class="font-bold text-blue-700">— Carlos R.</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-800 mb-4">Get In Touch</h2>
-                <p class="text-xl text-gray-600">Ready to find your dream property? Let's talk!</p>
-            </div>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <div>
-                    <div class="space-y-6">
-                        <div class="flex items-center">
-                            <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mr-4">
-                                <i class="fas fa-phone text-white" aria-hidden="true"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-semibold text-gray-800">Phone</h3>
-                                <p class="text-gray-600">(925) 272-8253</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center">
-                            <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mr-4">
-                                <i class="fas fa-envelope text-white" aria-hidden="true"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-semibold text-gray-800">Email</h3>
-                                <p class="text-gray-600">lunexaservices@gmail.com</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center">
-                            <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mr-4">
-                                <i class="fas fa-comment-dots text-white" aria-hidden="true"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-semibold text-gray-800">Feedback</h3>
-                                <p class="text-gray-600">Please feel free to give us any feedback.</p>
-                            </div>
-                        </div>
-                    </div>
+    <section id="contact" class="py-20 gradient-bg text-white">
+        <div class="max-w-2xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Contact Us</h2>
+            <form class="bg-white bg-opacity-20 rounded-lg p-8 shadow-lg">
+                <div class="mb-4">
+                    <label class="block mb-2 font-semibold" for="name">Name</label>
+                    <input class="w-full px-4 py-2 rounded-lg text-gray-900" type="text" id="name" name="name" required>
                 </div>
-                <div>
-                    <form class="space-y-6" action="https://formspree.io/f/xdoqzqzq" method="POST">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <input type="text" name="first_name" placeholder="First Name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
-                            <input type="text" name="last_name" placeholder="Last Name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
-                        </div>
-                        <input type="email" name="email" placeholder="Email Address" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
-                        <textarea name="message" placeholder="Message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required></textarea>
-                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold transition duration-300">
-                            Send Message
-                        </button>
-                    </form>
+                <div class="mb-4">
+                    <label class="block mb-2 font-semibold" for="email">Email</label>
+                    <input class="w-full px-4 py-2 rounded-lg text-gray-900" type="email" id="email" name="email" required>
                 </div>
+                <div class="mb-4">
+                    <label class="block mb-2 font-semibold" for="message">Message</label>
+                    <textarea class="w-full px-4 py-2 rounded-lg text-gray-900" id="message" name="message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="neon-btn px-8 py-3 rounded-lg font-semibold text-lg w-full">Send Message</button>
+            </form>
+            <div class="text-center mt-8">
+                <span class="text-lg">Or call us: <a href="tel:1234567890" class="underline font-bold">(123) 456-7890</a></span>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Lunexa Realty</h3>
-                    <p class="text-gray-400">Your trusted partner in real estate success.</p>
-                </div>
-                <div>
-                    <h4 class="font-semibold mb-4">Quick Links</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#home" class="hover:text-white transition">Home</a></li>
-                        <li><a href="#properties" class="hover:text-white transition">Properties</a></li>
-                        <li><a href="#services" class="hover:text-white transition">Services</a></li>
-                        <li><a href="#about" class="hover:text-white transition">About</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-semibold mb-4">Services</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li>Property Sales</li>
-                        <li>Property Management</li>
-                        <li>Investment Advisory</li>
-                        <li>Market Analysis</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-semibold mb-4">Follow Us</h4>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-white transition" aria-label="Facebook"><i class="fab fa-facebook text-xl" aria-hidden="true"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white transition" aria-label="Twitter"><i class="fab fa-twitter text-xl" aria-hidden="true"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white transition" aria-label="Instagram"><i class="fab fa-instagram text-xl" aria-hidden="true"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white transition" aria-label="LinkedIn"><i class="fab fa-linkedin text-xl" aria-hidden="true"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2024 Lunexa Realty. All rights reserved.</p> 
-            </div>
-        </div>
+    <footer class="py-8 bg-blue-900 text-white text-center">
+        &copy; 2025 BlueBreeze HVAC Solutions. All rights reserved.
     </footer>
-
-    <!-- Smooth Scrolling -->
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
-
-    <!-- Chatbot launcher bounce and prompt -->
-    <div class="chatbot-launcher">
-        <!-- LeadConnector widget will render here -->
-    </div>
-    <div class="chatbot-prompt">
-        <span>Test me out!</span>
-        <svg class="arrow-down" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 4v16m0 0l-6-6m6 6l6-6" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-    </div>
-
-    <script>
-        // Move the chatbot prompt next to the LeadConnector widget launcher
-        window.addEventListener('DOMContentLoaded', function() {
-            // Try to position the prompt next to the widget if it exists
-            function positionPrompt() {
-                const widget = document.querySelector('iframe[src*="leadconnector"]') || document.querySelector('[class*="leadconnector"]');
-                const prompt = document.querySelector('.chatbot-prompt');
-                if (widget && prompt) {
-                    // Already positioned fixed, but could adjust if needed
-                    prompt.style.display = 'flex';
-                }
-            }
-            positionPrompt();
-            setTimeout(positionPrompt, 2000);
-        });
-    </script>
-
-    <script>
-        // Smooth scroll for 'Give Feedback' button
-        window.addEventListener('DOMContentLoaded', function() {
-            var feedbackBtn = document.getElementById('give-feedback-btn');
-            if (feedbackBtn) {
-                feedbackBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const contactSection = document.getElementById('contact');
-                    if (contactSection) {
-                        contactSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                });
-            }
-        });
-    </script>
 </body>
 </html>
