@@ -241,15 +241,64 @@
   <!-- Chatbot Widget -->
   <div data-chat-widget data-widget-id="688aa1a4828cb2831b7c6f68" data-location-id="hxOQtfAN6Tod75TEXb8b"></div>
   <script>
-    // Optional: Clear any previous session data (if GHL stores in localStorage)
-    localStorage.removeItem('leadConnectorWidget'); // <-- Only if you're sure it uses this key
-
+    // Clear ALL possible GHL session data and chat history
+    const clearAllGHLData = () => {
+      // Clear localStorage
+      for (let i = localStorage.length - 1; i >= 0; i--) {
+        const key = localStorage.key(i);
+        if (key && (key.includes('leadConnector') || key.includes('chat') || key.includes('widget'))) {
+          localStorage.removeItem(key);
+        }
+      }
+      
+      // Clear sessionStorage
+      for (let i = sessionStorage.length - 1; i >= 0; i--) {
+        const key = sessionStorage.key(i);
+        if (key && (key.includes('leadConnector') || key.includes('chat') || key.includes('widget'))) {
+          sessionStorage.removeItem(key);
+        }
+      }
+      
+      // Clear IndexedDB if available
+      if ('indexedDB' in window) {
+        indexedDB.databases().then(databases => {
+          databases.forEach(db => {
+            if (db.name.includes('leadConnector') || db.name.includes('chat')) {
+              indexedDB.deleteDatabase(db.name);
+            }
+          });
+        });
+      }
+    };
+    
+    // Clear data immediately
+    clearAllGHLData();
+    
+    // Remove any existing GHL scripts
+    const existingScripts = document.querySelectorAll('script[src*="leadconnectorhq.com"]');
+    existingScripts.forEach(script => script.remove());
+    
+    // Remove any existing GHL widgets
+    const existingWidgets = document.querySelectorAll('[data-chat-widget]');
+    existingWidgets.forEach(widget => widget.remove());
+    
+    // Create new widget div
+    const widgetDiv = document.createElement('div');
+    widgetDiv.setAttribute('data-chat-widget', '');
+    widgetDiv.setAttribute('data-widget-id', '688aa1a4828cb2831b7c6f68');
+    widgetDiv.setAttribute('data-location-id', 'hxOQtfAN6Tod75TEXb8b');
+    document.body.appendChild(widgetDiv);
+    
     // Dynamically append the script with a cache buster to force reloading
     const script = document.createElement("script");
     script.src = "https://widgets.leadconnectorhq.com/loader.js?v=" + Date.now(); // cache-busting query
     script.setAttribute("data-resources-url", "https://widgets.leadconnectorhq.com/chat-widget/loader.js");
     script.setAttribute("data-widget-id", "688aa1a4828cb2831b7c6f68");
+    script.setAttribute("data-location-id", "hxOQtfAN6Tod75TEXb8b");
     document.body.appendChild(script);
+    
+    // Clear data again after a short delay to catch any new storage
+    setTimeout(clearAllGHLData, 100);
   </script>
 </body>
 </html>
