@@ -7,10 +7,20 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <!-- Preload critical resources for faster chatbot loading -->
+  <link rel="preload" href="https://widgets.leadconnectorhq.com/loader.js" as="script" crossorigin>
+  <link rel="preload" href="https://widgets.leadconnectorhq.com/chat-widget/loader.js" as="script" crossorigin>
+  <link rel="dns-prefetch" href="https://widgets.leadconnectorhq.com">
+  <link rel="dns-prefetch" href="https://leadconnectorhq.com">
+  
+  <!-- Optimized chatbot script loading -->
   <script 
     src="https://widgets.leadconnectorhq.com/loader.js"  
     data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" 
-    data-widget-id="688aa1a4828cb2831b7c6f68"   
+    data-widget-id="688aa1a4828cb2831b7c6f68"
+    async
+    defer
   > 
   </script>
   <style>
@@ -588,12 +598,357 @@
       }
     }
 
+    // Function to optimize chatbot performance
+    function optimizeChatbotPerformance() {
+      console.log('Optimizing chatbot performance...');
+      
+      try {
+        // Set performance hints for faster loading
+        if ('connection' in navigator) {
+          const connection = navigator.connection;
+          if (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g') {
+            console.log('Slow connection detected, optimizing for performance');
+            // Reduce animation complexity for slow connections
+            document.documentElement.style.setProperty('--animation-duration', '0.2s');
+          }
+        }
+        
+        // Preload critical chatbot resources
+        const preloadLinks = [
+          'https://widgets.leadconnectorhq.com/loader.js',
+          'https://widgets.leadconnectorhq.com/chat-widget/loader.js'
+        ];
+        
+        preloadLinks.forEach(url => {
+          const link = document.createElement('link');
+          link.rel = 'preload';
+          link.href = url;
+          link.as = 'script';
+          link.crossOrigin = 'anonymous';
+          document.head.appendChild(link);
+        });
+        
+        // Optimize network requests
+        if ('navigator' in window && 'connection' in navigator) {
+          const connection = navigator.connection;
+          if (connection.saveData) {
+            console.log('Data saver mode detected, optimizing requests');
+          }
+        }
+        
+        console.log('Chatbot performance optimization completed');
+      } catch (error) {
+        console.error('Error optimizing chatbot performance:', error);
+      }
+    }
+
+    // Function to warm up chatbot connections
+    function warmupChatbotConnections() {
+      console.log('Warming up chatbot connections...');
+      
+      try {
+        // Pre-establish connections to chatbot servers
+        const warmupUrls = [
+          'https://widgets.leadconnectorhq.com',
+          'https://leadconnectorhq.com'
+        ];
+        
+        warmupUrls.forEach(url => {
+          // Create a hidden iframe to establish connection
+          const iframe = document.createElement('iframe');
+          iframe.style.display = 'none';
+          iframe.src = url;
+          document.body.appendChild(iframe);
+          
+          // Remove after a short delay
+          setTimeout(() => {
+            if (iframe.parentNode) {
+              iframe.parentNode.removeChild(iframe);
+            }
+          }, 1000);
+        });
+        
+        console.log('Chatbot connection warmup completed');
+      } catch (error) {
+        console.error('Error warming up chatbot connections:', error);
+      }
+    }
+
+    // Function to monitor and recover chatbot functionality
+    function monitorChatbotHealth() {
+      console.log('Starting chatbot health monitoring...');
+      
+      let healthCheckInterval;
+      let lastActivityTime = Date.now();
+      let consecutiveErrors = 0;
+      const MAX_ERRORS = 3;
+      const HEALTH_CHECK_INTERVAL = 10000; // 10 seconds
+      const INACTIVITY_TIMEOUT = 30000; // 30 seconds
+      
+      // Monitor chatbot widget for errors and inactivity
+      function checkChatbotHealth() {
+        try {
+          const chatWidget = document.querySelector('[data-chat-widget]');
+          const chatIframe = document.querySelector('iframe[src*="leadconnectorhq.com"]');
+          
+          // Check if widget exists and is responsive
+          if (!chatWidget && !chatIframe) {
+            console.log('Chatbot widget not found, attempting recovery...');
+            consecutiveErrors++;
+            if (consecutiveErrors >= MAX_ERRORS) {
+              console.log('Multiple errors detected, forcing chatbot restart...');
+              forceChatbotRestart();
+              consecutiveErrors = 0;
+            }
+            return;
+          }
+          
+          // Check for inactivity (no new messages in 30 seconds)
+          const currentTime = Date.now();
+          if (currentTime - lastActivityTime > INACTIVITY_TIMEOUT) {
+            console.log('Chatbot appears inactive, checking connection...');
+            testChatbotConnection();
+          }
+          
+          // Reset error counter if everything looks good
+          consecutiveErrors = 0;
+          
+        } catch (error) {
+          console.error('Error in chatbot health check:', error);
+          consecutiveErrors++;
+        }
+      }
+      
+      // Test chatbot connection
+      function testChatbotConnection() {
+        try {
+          const testMessage = 'Connection test';
+          const chatInput = document.querySelector('input[placeholder*="message"], textarea[placeholder*="message"]');
+          
+          if (chatInput) {
+            // Simulate a test interaction
+            chatInput.focus();
+            setTimeout(() => {
+              if (document.activeElement !== chatInput) {
+                console.log('Chatbot input not responding, attempting recovery...');
+                forceChatbotRestart();
+              }
+            }, 2000);
+          } else {
+            console.log('Chatbot input not found, forcing restart...');
+            forceChatbotRestart();
+          }
+        } catch (error) {
+          console.error('Error testing chatbot connection:', error);
+          forceChatbotRestart();
+        }
+      }
+      
+      // Force restart chatbot
+      function forceChatbotRestart() {
+        console.log('Forcing chatbot restart...');
+        
+        try {
+          // Clear any stuck processes
+          const chatElements = document.querySelectorAll('[data-chat-widget], iframe[src*="leadconnectorhq.com"]');
+          chatElements.forEach(element => {
+            try {
+              element.remove();
+            } catch (e) {
+              console.log('Error removing chat element:', e);
+            }
+          });
+          
+          // Clear all storage again
+          forceChatbotReset();
+          
+          // Reload the chatbot script
+          const scriptElements = document.querySelectorAll('script[src*="leadconnectorhq.com/loader.js"]');
+          scriptElements.forEach(script => {
+            try {
+              script.remove();
+            } catch (e) {
+              console.log('Error removing script:', e);
+            }
+          });
+          
+          // Create new script with retry mechanism
+          const newScript = document.createElement('script');
+          newScript.src = 'https://widgets.leadconnectorhq.com/loader.js';
+          newScript.setAttribute('data-resources-url', 'https://widgets.leadconnectorhq.com/chat-widget/loader.js');
+          newScript.setAttribute('data-widget-id', '688aa1a4828cb2831b7c6f68');
+          newScript.async = true;
+          newScript.defer = true;
+          
+          // Add error handling to script
+          newScript.onerror = function() {
+            console.error('Chatbot script failed to load, retrying...');
+            setTimeout(() => {
+              document.head.appendChild(newScript);
+            }, 2000);
+          };
+          
+          document.head.appendChild(newScript);
+          
+          // Reset timers
+          lastActivityTime = Date.now();
+          consecutiveErrors = 0;
+          
+          console.log('Chatbot restart completed');
+        } catch (error) {
+          console.error('Error during chatbot restart:', error);
+          // Fallback to page reload
+          setTimeout(() => {
+            window.location.reload();
+          }, 3000);
+        }
+      }
+      
+      // Start health monitoring
+      healthCheckInterval = setInterval(checkChatbotHealth, HEALTH_CHECK_INTERVAL);
+      
+      // Monitor for user activity to update lastActivityTime
+      document.addEventListener('click', () => {
+        lastActivityTime = Date.now();
+      });
+      
+      document.addEventListener('keypress', () => {
+        lastActivityTime = Date.now();
+      });
+      
+      // Monitor for chatbot messages (if possible)
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (mutation.type === 'childList') {
+            // Check if new chat messages were added
+            const chatMessages = document.querySelectorAll('[class*="message"], [class*="chat"]');
+            if (chatMessages.length > 0) {
+              lastActivityTime = Date.now();
+            }
+          }
+        });
+      });
+      
+      // Start observing
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true
+      });
+      
+      console.log('Chatbot health monitoring started');
+      
+      // Return cleanup function
+      return () => {
+        if (healthCheckInterval) {
+          clearInterval(healthCheckInterval);
+        }
+        observer.disconnect();
+      };
+    }
+
+    // Function to handle chatbot timeouts and retries
+    function setupChatbotRetryMechanism() {
+      console.log('Setting up chatbot retry mechanism...');
+      
+      let retryCount = 0;
+      const MAX_RETRIES = 5;
+      const RETRY_DELAY = 3000; // 3 seconds
+      
+      function retryChatbotLoad() {
+        if (retryCount >= MAX_RETRIES) {
+          console.error('Max retries reached, showing error message to user');
+          showChatbotError();
+          return;
+        }
+        
+        retryCount++;
+        console.log(`Retrying chatbot load (attempt ${retryCount}/${MAX_RETRIES})...`);
+        
+        setTimeout(() => {
+          forceChatbotReset();
+          warmupChatbotConnections();
+        }, RETRY_DELAY);
+      }
+      
+      function showChatbotError() {
+        const errorDiv = document.createElement('div');
+        errorDiv.innerHTML = `
+          <div style="
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: #ef4444;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            z-index: 10002;
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+            max-width: 300px;
+          ">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span>⚠️</span>
+              <div>
+                <div style="font-weight: 600; margin-bottom: 5px;">Chat Unavailable</div>
+                <div style="font-size: 12px; opacity: 0.9;">Please refresh the page or try again later.</div>
+              </div>
+            </div>
+            <button onclick="this.parentElement.parentElement.remove()" style="
+              position: absolute;
+              top: 5px;
+              right: 10px;
+              background: none;
+              border: none;
+              color: white;
+              font-size: 18px;
+              cursor: pointer;
+              opacity: 0.7;
+            ">×</button>
+          </div>
+        `;
+        document.body.appendChild(errorDiv);
+      }
+      
+      // Monitor for script loading errors
+      window.addEventListener('error', (event) => {
+        if (event.filename && event.filename.includes('leadconnectorhq.com')) {
+          console.error('Chatbot script error detected:', event.error);
+          retryChatbotLoad();
+        }
+      });
+      
+      // Monitor for network errors
+      window.addEventListener('unhandledrejection', (event) => {
+        if (event.reason && event.reason.toString().includes('leadconnectorhq.com')) {
+          console.error('Chatbot network error detected:', event.reason);
+          retryChatbotLoad();
+        }
+      });
+      
+      console.log('Chatbot retry mechanism setup completed');
+    }
+
     // Initialize when page loads
     document.addEventListener('DOMContentLoaded', function() {
       console.log('Initializing chat refresh functionality...');
       
       // Force complete reset immediately when page loads
       forceChatbotReset();
+      
+      // Optimize performance for faster chatbot responses
+      optimizeChatbotPerformance();
+      
+      // Warm up connections for faster initial response
+      warmupChatbotConnections();
+      
+      // Setup monitoring and recovery systems
+      setupChatbotRetryMechanism();
+      
+      // Start health monitoring after a short delay
+      setTimeout(() => {
+        monitorChatbotHealth();
+      }, 5000); // Wait 5 seconds for initial load
       
       // Add the refresh button
       addChatbotRefreshButton();
@@ -605,15 +960,31 @@
     // Also expose the function globally for manual use
     window.refreshChatbotCache = refreshChatbotCache;
     window.forceChatbotReset = forceChatbotReset;
+    window.optimizeChatbotPerformance = optimizeChatbotPerformance;
+    window.warmupChatbotConnections = warmupChatbotConnections;
+    window.monitorChatbotHealth = monitorChatbotHealth;
+    window.setupChatbotRetryMechanism = setupChatbotRetryMechanism;
     
     // Add fallback initialization and force reset
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', function() {
         forceChatbotReset();
+        optimizeChatbotPerformance();
+        warmupChatbotConnections();
+        setupChatbotRetryMechanism();
+        setTimeout(() => {
+          monitorChatbotHealth();
+        }, 5000);
         addChatbotRefreshButton();
       });
     } else {
       forceChatbotReset();
+      optimizeChatbotPerformance();
+      warmupChatbotConnections();
+      setupChatbotRetryMechanism();
+      setTimeout(() => {
+        monitorChatbotHealth();
+      }, 5000);
       addChatbotRefreshButton();
     }
     
@@ -622,6 +993,7 @@
       if (!document.hidden) {
         console.log('Page became visible, forcing chatbot reset...');
         forceChatbotReset();
+        warmupChatbotConnections(); // Re-warm connections when returning to tab
       }
     });
   </script>
