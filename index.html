@@ -521,23 +521,109 @@
       }, 30 * 60 * 1000); // 30 minutes
     }
 
+    // Function to force complete chatbot reset on page load
+    function forceChatbotReset() {
+      console.log('Forcing complete chatbot reset on page load...');
+      
+      // Clear all possible storage immediately
+      try {
+        // Clear localStorage completely
+        localStorage.clear();
+        console.log('localStorage completely cleared');
+        
+        // Clear sessionStorage completely
+        sessionStorage.clear();
+        console.log('sessionStorage completely cleared');
+        
+        // Clear all cookies
+        const cookies = document.cookie.split(';');
+        cookies.forEach(cookie => {
+          const eqPos = cookie.indexOf('=');
+          const name = eqPos > -1 ? cookie.substr(0, eqPos).trim() : cookie.trim();
+          if (name) {
+            document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/';
+            document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;domain=' + window.location.hostname;
+            document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;domain=.' + window.location.hostname;
+          }
+        });
+        console.log('All cookies cleared');
+        
+        // Clear IndexedDB
+        if ('indexedDB' in window) {
+          const databases = ['chat-widget-db', 'leadconnector-db', 'gohighlevel-db'];
+          databases.forEach(dbName => {
+            const request = indexedDB.deleteDatabase(dbName);
+            request.onsuccess = function() {
+              console.log('IndexedDB database cleared:', dbName);
+            };
+            request.onerror = function() {
+              console.log('IndexedDB clear error for:', dbName);
+            };
+          });
+        }
+        
+        // Clear any service worker registrations
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.getRegistrations().then(function(registrations) {
+            for(let registration of registrations) {
+              registration.unregister();
+              console.log('Service worker unregistered');
+            }
+          });
+        }
+        
+        // Clear cache storage
+        if ('caches' in window) {
+          caches.keys().then(function(names) {
+            for (let name of names) {
+              caches.delete(name);
+              console.log('Cache deleted:', name);
+            }
+          });
+        }
+        
+        console.log('Complete chatbot reset completed');
+      } catch (error) {
+        console.error('Error during chatbot reset:', error);
+      }
+    }
+
     // Initialize when page loads
     document.addEventListener('DOMContentLoaded', function() {
       console.log('Initializing chat refresh functionality...');
+      
+      // Force complete reset immediately when page loads
+      forceChatbotReset();
+      
+      // Add the refresh button
       addChatbotRefreshButton();
+      
       // Uncomment the line below to enable auto-refresh every 30 minutes
       // setupAutoRefresh();
     });
 
     // Also expose the function globally for manual use
     window.refreshChatbotCache = refreshChatbotCache;
+    window.forceChatbotReset = forceChatbotReset;
     
-    // Add fallback initialization
+    // Add fallback initialization and force reset
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', addChatbotRefreshButton);
+      document.addEventListener('DOMContentLoaded', function() {
+        forceChatbotReset();
+        addChatbotRefreshButton();
+      });
     } else {
+      forceChatbotReset();
       addChatbotRefreshButton();
     }
+    
+    // Force reset on page visibility change (when user returns to tab)
+    document.addEventListener('visibilitychange', function() {
+      if (!document.hidden) {
+        console.log('Page became visible, forcing chatbot reset...');
+        forceChatbotReset();
+      }
+    });
   </script>
 </body>
 </html>
