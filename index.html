@@ -257,5 +257,287 @@
     data-widget-id="688aa1a4828cb2831b7c6f68"   
   > 
   </script>
+
+  <!-- Chatbot Cache Refresh and Restart Script -->
+  <script>
+    // Global variables to prevent multiple instances
+    let refreshButtonAdded = false;
+    let keyboardListenerAdded = false;
+    let notificationShown = false;
+
+    // Function to refresh chatbot cache and force restart
+    function refreshChatbotCache() {
+      try {
+        console.log('Starting chatbot cache refresh...');
+        
+        // Show loading state
+        const refreshBtn = document.querySelector('#chat-refresh-btn');
+        if (refreshBtn) {
+          refreshBtn.innerHTML = '⏳ Refreshing...';
+          refreshBtn.style.background = '#f59e0b';
+          refreshBtn.disabled = true;
+        }
+
+        // Clear any existing chat widget instances
+        const existingWidgets = document.querySelectorAll('[data-chat-widget]');
+        existingWidgets.forEach(widget => {
+          if (widget._widgetInstance) {
+            try {
+              widget._widgetInstance.destroy();
+            } catch (e) {
+              console.log('Widget destroy error:', e);
+            }
+          }
+        });
+
+        // Clear localStorage for chat data (more comprehensive)
+        const keysToRemove = [];
+        for (let i = 0; i < localStorage.length; i++) {
+          const key = localStorage.key(i);
+          if (key && (
+            key.includes('chat') || 
+            key.includes('widget') || 
+            key.includes('leadconnector') ||
+            key.includes('conversation') ||
+            key.includes('session') ||
+            key.includes('gohighlevel')
+          )) {
+            keysToRemove.push(key);
+          }
+        }
+        keysToRemove.forEach(key => {
+          try {
+            localStorage.removeItem(key);
+            console.log('Removed localStorage key:', key);
+          } catch (e) {
+            console.log('Error removing localStorage key:', key, e);
+          }
+        });
+
+        // Clear sessionStorage
+        try {
+          sessionStorage.clear();
+          console.log('SessionStorage cleared');
+        } catch (e) {
+          console.log('Error clearing sessionStorage:', e);
+        }
+
+        // Clear any cached data in IndexedDB
+        if ('indexedDB' in window) {
+          try {
+            const request = indexedDB.deleteDatabase('chat-widget-db');
+            request.onsuccess = function() {
+              console.log('Chat widget IndexedDB cleared');
+            };
+            request.onerror = function() {
+              console.log('IndexedDB clear error:', request.error);
+            };
+          } catch (e) {
+            console.log('IndexedDB error:', e);
+          }
+        }
+
+        // Clear cookies related to chat
+        const cookies = document.cookie.split(';');
+        cookies.forEach(cookie => {
+          const eqPos = cookie.indexOf('=');
+          const name = eqPos > -1 ? cookie.substr(0, eqPos).trim() : cookie.trim();
+          if (name.includes('chat') || name.includes('widget') || name.includes('leadconnector')) {
+            document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/';
+            console.log('Removed cookie:', name);
+          }
+        });
+
+        // Force reload the chat widget script
+        const scriptElements = document.querySelectorAll('script[src*="leadconnectorhq.com/loader.js"]');
+        scriptElements.forEach(script => {
+          try {
+            script.remove();
+            console.log('Removed chat widget script');
+          } catch (e) {
+            console.log('Error removing script:', e);
+          }
+        });
+
+        // Create new script element
+        const newScript = document.createElement('script');
+        newScript.src = 'https://widgets.leadconnectorhq.com/loader.js';
+        newScript.setAttribute('data-resources-url', 'https://widgets.leadconnectorhq.com/chat-widget/loader.js');
+        newScript.setAttribute('data-widget-id', '688aa1a4828cb2831b7c6f68');
+        
+        // Add to document
+        document.head.appendChild(newScript);
+        console.log('New chat widget script added');
+
+        // Force page refresh after a short delay to ensure complete reset
+        setTimeout(() => {
+          console.log('Forcing page reload...');
+          window.location.reload();
+        }, 1500);
+
+        console.log('Chatbot cache refresh completed');
+      } catch (error) {
+        console.error('Error refreshing chatbot cache:', error);
+        // Fallback: force page reload
+        setTimeout(() => {
+          window.location.reload();
+        }, 500);
+      }
+    }
+
+    // Function to add a refresh button to the chat widget
+    function addChatbotRefreshButton() {
+      if (refreshButtonAdded) return;
+      
+      // Wait for chat widget to load
+      setTimeout(() => {
+        const chatWidget = document.querySelector('[data-chat-widget]');
+        if (chatWidget && !refreshButtonAdded) {
+          refreshButtonAdded = true;
+          
+          // Create refresh button - positioned near the chat widget
+          const refreshBtn = document.createElement('button');
+          refreshBtn.id = 'chat-refresh-btn';
+          refreshBtn.innerHTML = '🔄 Refresh Chat';
+          refreshBtn.title = 'Refresh Chat Conversation';
+          refreshBtn.style.cssText = `
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            padding: 12px 20px;
+            border-radius: 25px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            z-index: 10000;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Inter', sans-serif;
+            user-select: none;
+          `;
+          
+          refreshBtn.addEventListener('mouseenter', () => {
+            if (!refreshBtn.disabled) {
+              refreshBtn.style.transform = 'scale(1.05)';
+              refreshBtn.style.boxShadow = '0 6px 16px rgba(37, 99, 235, 0.4)';
+              refreshBtn.style.background = '#1d4ed8';
+            }
+          });
+          
+          refreshBtn.addEventListener('mouseleave', () => {
+            if (!refreshBtn.disabled) {
+              refreshBtn.style.transform = 'scale(1)';
+              refreshBtn.style.boxShadow = '0 4px 12px rgba(37, 99, 235, 0.3)';
+              refreshBtn.style.background = '#2563eb';
+            }
+          });
+          
+          refreshBtn.addEventListener('click', () => {
+            if (!refreshBtn.disabled) {
+              refreshChatbotCache();
+            }
+          });
+          
+          document.body.appendChild(refreshBtn);
+          console.log('Chat refresh button added');
+
+          // Add keyboard shortcut (Ctrl+Shift+R) only once
+          if (!keyboardListenerAdded) {
+            keyboardListenerAdded = true;
+            document.addEventListener('keydown', function(e) {
+              if (e.ctrlKey && e.shiftKey && e.key === 'R') {
+                e.preventDefault();
+                console.log('Keyboard shortcut triggered');
+                refreshChatbotCache();
+              }
+            });
+            console.log('Keyboard shortcut listener added');
+          }
+
+          // Add notification banner only once
+          if (!notificationShown) {
+            notificationShown = true;
+            const notification = document.createElement('div');
+            notification.id = 'chat-refresh-notification';
+            notification.innerHTML = `
+              <div style="
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #10b981;
+                color: white;
+                padding: 12px 20px;
+                border-radius: 8px;
+                font-size: 14px;
+                font-weight: 500;
+                z-index: 10001;
+                box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+                animation: slideIn 0.5s ease;
+                font-family: 'Inter', sans-serif;
+              ">
+              💡 Chat refresh available! Press Ctrl+Shift+R or click the refresh button
+              </div>
+            `;
+            
+            // Add CSS animation if not already added
+            if (!document.querySelector('#chat-refresh-styles')) {
+              const style = document.createElement('style');
+              style.id = 'chat-refresh-styles';
+              style.textContent = `
+                @keyframes slideIn {
+                  from { transform: translateX(100%); opacity: 0; }
+                  to { transform: translateX(0); opacity: 1; }
+                }
+              `;
+              document.head.appendChild(style);
+            }
+            
+            document.body.appendChild(notification);
+            console.log('Chat refresh notification shown');
+            
+            // Remove notification after 5 seconds
+            setTimeout(() => {
+              if (notification.parentNode) {
+                notification.remove();
+                console.log('Chat refresh notification removed');
+              }
+            }, 5000);
+          }
+        }
+      }, 3000); // Wait 3 seconds for widget to load
+    }
+
+    // Auto-refresh chatbot every 30 minutes (optional)
+    function setupAutoRefresh() {
+      setInterval(() => {
+        console.log('Auto-refreshing chatbot...');
+        refreshChatbotCache();
+      }, 30 * 60 * 1000); // 30 minutes
+    }
+
+    // Initialize when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('Initializing chat refresh functionality...');
+      addChatbotRefreshButton();
+      // Uncomment the line below to enable auto-refresh every 30 minutes
+      // setupAutoRefresh();
+    });
+
+    // Also expose the function globally for manual use
+    window.refreshChatbotCache = refreshChatbotCache;
+    
+    // Add fallback initialization
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', addChatbotRefreshButton);
+    } else {
+      addChatbotRefreshButton();
+    }
+  </script>
 </body>
 </html>
