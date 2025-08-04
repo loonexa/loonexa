@@ -284,10 +284,58 @@
     <div class="text-xs opacity-70">&copy; 2025 BlueBreeze HVAC Solutions. All rights reserved.</div>
   </footer>
 
+  <script>
+    // Force clear all chat data and reset on page load
+    window.addEventListener('load', function() {
+      // Clear all localStorage
+      localStorage.clear();
+      
+      // Clear all sessionStorage
+      sessionStorage.clear();
+      
+      // Clear any cookies related to chat
+      document.cookie.split(";").forEach(function(c) { 
+        document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); 
+      });
+      
+      // Force reload the page to ensure complete reset
+      if (window.performance && window.performance.navigation.type === window.performance.navigation.TYPE_RELOAD) {
+        // This is a page reload, ensure fresh start
+        console.log('Page reloaded - ensuring fresh chat start');
+      }
+      
+      // Force destroy any existing LeadConnector widgets
+      if (window.LeadConnector && window.LeadConnector.destroy) {
+        window.LeadConnector.destroy();
+      }
+      
+      // Clear any global LeadConnector variables
+      if (window.LeadConnectorWidget) {
+        delete window.LeadConnectorWidget;
+      }
+      
+      // Force reinitialize after a short delay
+      setTimeout(function() {
+        // Trigger a fresh widget load
+        const event = new Event('leadconnector-reset');
+        window.dispatchEvent(event);
+      }, 100);
+    });
+    
+    // Also clear on beforeunload to ensure clean state
+    window.addEventListener('beforeunload', function() {
+      localStorage.clear();
+      sessionStorage.clear();
+    });
+  </script>
+  
   <script 
     src="https://widgets.leadconnectorhq.com/loader.js"  
     data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" 
-    data-widget-id="688ff76967d91be5049c68c5"   > 
+    data-widget-id="688ff76967d91be5049c68c5"
+    data-clear-chat-on-load="true"
+    data-reset-conversation="true"
+    data-force-refresh="true"> 
   </script>
 
   <!-- Website Functionality Script -->
