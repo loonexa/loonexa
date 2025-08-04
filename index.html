@@ -4,6 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BlueBreeze HVAC Solutions | Comfort Experts</title>
+  <meta name="description" content="Professional HVAC services including AC installation, heating repair, air quality solutions, and emergency services. Licensed and certified technicians serving your area.">
+  <meta name="keywords" content="HVAC, air conditioning, heating, AC repair, furnace repair, air quality, HVAC installation, emergency HVAC">
+  <meta name="author" content="BlueBreeze HVAC Solutions">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://bluebreezehvac.com">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bluebreezehvac.com">
+  <meta property="og:title" content="BlueBreeze HVAC Solutions | Comfort Experts">
+  <meta property="og:description" content="Professional HVAC services including AC installation, heating repair, air quality solutions, and emergency services.">
+  <meta property="og:image" content="https://bluebreezehvac.com/og-image.jpg">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://bluebreezehvac.com">
+  <meta property="twitter:title" content="BlueBreeze HVAC Solutions | Comfort Experts">
+  <meta property="twitter:description" content="Professional HVAC services including AC installation, heating repair, air quality solutions, and emergency services.">
+  <meta property="twitter:image" content="https://bluebreezehvac.com/og-image.jpg">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -11,7 +30,7 @@
   <script 
     src="https://widgets.leadconnectorhq.com/loader.js"  
     data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" 
-    data-widget-id="688aa1a4828cb2831b7c6f68"   
+    data-widget-id="688ff76967d91be5049c68c5"   
   > 
   </script>
   <style>
@@ -26,18 +45,35 @@
   </style>
 </head>
 <body class="text-gray-900">
-  <!-- Subtle mock website note -->
-  <div style="position:fixed;bottom:18px;left:18px;z-index:10001;font-size:0.82rem;color:#b0b0b0;opacity:0.6;pointer-events:none;user-select:none;letter-spacing:0.01em;">This is a mock website for demonstration purposes only.</div>
+
   <!-- Sticky Navigation -->
   <nav class="sticky-nav w-full">
     <div class="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
       <a href="#home" class="text-2xl font-extrabold text-blue-700 tracking-tight">BlueBreeze</a>
-      <div class="space-x-8 text-lg font-semibold">
+      
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex space-x-8 text-lg font-semibold">
         <a href="#home" class="text-blue-700">Home</a>
         <a href="#services" class="hover:text-blue-700">Services</a>
         <a href="#about" class="hover:text-blue-700">About</a>
         <a href="#faq" class="hover:text-blue-700">FAQ</a>
         <a href="#contact" class="hover:text-blue-700">Contact</a>
+      </div>
+      
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="md:hidden text-blue-700 text-2xl">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+    
+    <!-- Mobile Navigation -->
+    <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-200">
+      <div class="px-6 py-4 space-y-4">
+        <a href="#home" class="block text-lg font-semibold text-blue-700">Home</a>
+        <a href="#services" class="block text-lg font-semibold hover:text-blue-700">Services</a>
+        <a href="#about" class="block text-lg font-semibold hover:text-blue-700">About</a>
+        <a href="#faq" class="block text-lg font-semibold hover:text-blue-700">FAQ</a>
+        <a href="#contact" class="block text-lg font-semibold hover:text-blue-700">Contact</a>
       </div>
     </div>
   </nav>
@@ -210,21 +246,31 @@
       </div>
     </div>
     <div>
-      <form class="glass p-8 shadow-lg">
+      <form id="contact-form" class="glass p-8 shadow-lg">
         <h2 class="section-title text-2xl mb-4">Send Us a Message</h2>
         <div class="mb-4">
           <label class="block mb-2 font-semibold" for="name">Name</label>
-          <input class="w-full px-4 py-2 rounded-lg text-gray-900" type="text" id="name" name="name" required>
+          <input class="w-full px-4 py-2 rounded-lg text-gray-900 border border-gray-300 focus:border-blue-500 focus:outline-none" type="text" id="name" name="name" required>
         </div>
         <div class="mb-4">
           <label class="block mb-2 font-semibold" for="email">Email</label>
-          <input class="w-full px-4 py-2 rounded-lg text-gray-900" type="email" id="email" name="email" required>
+          <input class="w-full px-4 py-2 rounded-lg text-gray-900 border border-gray-300 focus:border-blue-500 focus:outline-none" type="email" id="email" name="email" required>
+        </div>
+        <div class="mb-4">
+          <label class="block mb-2 font-semibold" for="phone">Phone</label>
+          <input class="w-full px-4 py-2 rounded-lg text-gray-900 border border-gray-300 focus:border-blue-500 focus:outline-none" type="tel" id="phone" name="phone" required>
         </div>
         <div class="mb-4">
           <label class="block mb-2 font-semibold" for="message">Message</label>
-          <textarea class="w-full px-4 py-2 rounded-lg text-gray-900" id="message" name="message" rows="4" required></textarea>
+          <textarea class="w-full px-4 py-2 rounded-lg text-gray-900 border border-gray-300 focus:border-blue-500 focus:outline-none" id="message" name="message" rows="4" required></textarea>
         </div>
         <button type="submit" class="neon-btn px-8 py-3 rounded-lg font-semibold text-lg w-full">Send Message</button>
+        <div id="form-success" class="hidden mt-4 p-4 bg-green-100 text-green-700 rounded-lg">
+          Thank you! Your message has been sent successfully.
+        </div>
+        <div id="form-error" class="hidden mt-4 p-4 bg-red-100 text-red-700 rounded-lg">
+          Sorry, there was an error sending your message. Please try again.
+        </div>
       </form>
     </div>
   </section>
@@ -249,6 +295,118 @@
     src="https://widgets.leadconnectorhq.com/loader.js"  
     data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" 
     data-widget-id="688ff76967d91be5049c68c5"   > 
+  </script>
+
+  <!-- Website Functionality Script -->
+  <script>
+    // Mobile menu functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      
+      if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', function() {
+          mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking on a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+          link.addEventListener('click', function() {
+            mobileMenu.classList.add('hidden');
+          });
+        });
+      }
+      
+      // Contact form functionality
+      const contactForm = document.getElementById('contact-form');
+      const formSuccess = document.getElementById('form-success');
+      const formError = document.getElementById('form-error');
+      
+      if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          // Get form data
+          const formData = new FormData(contactForm);
+          const name = formData.get('name');
+          const email = formData.get('email');
+          const phone = formData.get('phone');
+          const message = formData.get('message');
+          
+          // Basic validation
+          if (!name || !email || !phone || !message) {
+            showFormMessage('error', 'Please fill in all fields.');
+            return;
+          }
+          
+          // Email validation
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(email)) {
+            showFormMessage('error', 'Please enter a valid email address.');
+            return;
+          }
+          
+          // Phone validation
+          const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+          if (!phoneRegex.test(phone.replace(/[\s\-\(\)]/g, ''))) {
+            showFormMessage('error', 'Please enter a valid phone number.');
+            return;
+          }
+          
+          // Simulate form submission (replace with actual form handling)
+          showFormMessage('success', 'Thank you! Your message has been sent successfully.');
+          contactForm.reset();
+        });
+      }
+      
+      function showFormMessage(type, message) {
+        if (type === 'success') {
+          formSuccess.textContent = message;
+          formSuccess.classList.remove('hidden');
+          formError.classList.add('hidden');
+        } else {
+          formError.textContent = message;
+          formError.classList.remove('hidden');
+          formSuccess.classList.add('hidden');
+        }
+        
+        // Hide message after 5 seconds
+        setTimeout(() => {
+          formSuccess.classList.add('hidden');
+          formError.classList.add('hidden');
+        }, 5000);
+      }
+      
+      // Smooth scrolling for navigation links
+      const navLinks = document.querySelectorAll('a[href^="#"]');
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          const targetSection = document.querySelector(targetId);
+          
+          if (targetSection) {
+            targetSection.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+      
+      // Add scroll effect to navigation
+      window.addEventListener('scroll', function() {
+        const nav = document.querySelector('.sticky-nav');
+        if (window.scrollY > 100) {
+          nav.style.background = 'rgba(255,255,255,0.98)';
+          nav.style.boxShadow = '0 2px 20px rgba(37,99,235,0.1)';
+        } else {
+          nav.style.background = 'rgba(255,255,255,0.95)';
+          nav.style.boxShadow = '0 2px 8px rgba(37,99,235,0.04)';
+        }
+      });
+    });
   </script>
 
 </body>
